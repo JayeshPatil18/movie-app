@@ -1,4 +1,13 @@
-# Flutter App Assessment (Movies App)
+<div align="left">
+  <h1>Movies🎥 - Flutter App</h1>
+  <img alt="Flutter" src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" style="margin-left: 10px;">
+  <img alt="Dart" src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" style="margin-left: 10px;">
+  <img alt="Figma" src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white" style="margin-left: 10px;">
+  <a href="https://github.com/JayeshPatil18/movie-app">
+    <img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" style="margin-left: 10px;">
+  </a>
+</div>
+</br>
 
 ## Project Explanation
 
