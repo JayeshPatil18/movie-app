@@ -42,9 +42,11 @@ class _HomePageState extends State<HomePage> {
         return !(element.title.toLowerCase().contains(HomePage.searchText.toLowerCase()));
       }).toList();
 
-      setState(() {
-        movies = movieFiltered;
-      });
+      if(movieFiltered.isNotEmpty){
+        setState(() {
+          movies = movieFiltered;
+        });
+      }
     }
   }
 
@@ -90,8 +92,10 @@ class _HomePageState extends State<HomePage> {
                                 // cursorHeight: cursorHeight,
                                 cursorColor: blue10,
                                 onChanged: (value) {
-                                    HomePage.searchText =
-                                        value.trim().toLowerCase();
+                                    setState(() {
+                                      HomePage.searchText =
+                                          value.trim().toLowerCase();
+                                    });
 
                                   searchMovies();
                                 },
