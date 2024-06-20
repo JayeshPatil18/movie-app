@@ -25,7 +25,7 @@ class _MovieModelState extends State<MovieModel> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, 'view_review', arguments: IdArguments(widget.movie.movieId));
+        Navigator.pushNamed(context, 'view_details', arguments: Argument(widget.movie));
       },
       child: Container(
         decoration: BoxDecoration(

@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../../shared/constants/colors.dart';
 import '../../../../shared/constants/textstyle.dart';
+import '../../domain/entities/entite.dart';
 import '../widgets/button.dart';
 
 class ViewDetails extends StatefulWidget {
-  const ViewDetails({super.key});
+  final Movie movie;
+
+  const ViewDetails({super.key, required this.movie});
 
   @override
   _ViewDetailsState createState() => _ViewDetailsState();

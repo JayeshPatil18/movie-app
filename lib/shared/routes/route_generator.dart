@@ -1,4 +1,5 @@
 import 'package:assessment/features/wallet/presentation/pages/details.dart';
+import 'package:assessment/shared/routes/route_arguments.dart';
 import 'package:flutter/material.dart';
 import '../../features/wallet/presentation/pages/home.dart';
 
@@ -13,8 +14,10 @@ class RouteGenerator{
         );
 
       case 'view_details':
+        Argument movieModel = settings.arguments as Argument;
+
         return MaterialPageRoute(
-            builder: (_) => const ViewDetails()
+            builder: (_) => ViewDetails(movie: movieModel.movie)
         );
 
       default:

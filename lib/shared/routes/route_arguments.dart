@@ -1,6 +1,8 @@
-class IdArguments {
-  final int id;
+import '../../features/wallet/domain/entities/entite.dart';
 
-  IdArguments(
-      this.id,);
+class Argument {
+  final Movie movie;
+
+  Argument(
+      this.movie,);
 }
