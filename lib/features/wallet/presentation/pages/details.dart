@@ -12,9 +12,6 @@ class ViewDetails extends StatefulWidget {
 }
 
 class _ViewDetailsState extends State<ViewDetails> {
-  String selectedCurrency1 = 'VIBLE';
-  String selectedCurrency2 = 'Uniswap';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -19,7 +19,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   TextEditingController searchTextController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
 
@@ -42,8 +41,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     fetchMovies();
     _focusNode.addListener(() {
-      setState(() {
-      });
+      setState(() {});
     });
   }
 
@@ -93,41 +91,44 @@ class _HomePageState extends State<HomePage> {
                                   hintText: 'Search Products',
                                   hintStyle: hintFieldText,
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        borderRadius),
+                                    borderRadius:
+                                        BorderRadius.circular(borderRadius),
                                     borderSide: const BorderSide(
                                       width: 0,
                                       style: BorderStyle.none,
                                     ),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          borderRadius),
+                                      borderRadius:
+                                          BorderRadius.circular(borderRadius),
                                       borderSide: BorderSide(
-                                          width: 1.0,
-                                          color: blue10)),
+                                          width: 1.0, color: blue10)),
                                 ),
                               ),
                             ),
                             Positioned(
                                 right: 8,
-                                child: searchTextController.text != '' ? GestureDetector(
-                                  onTap: () {
-                                    searchTextController.text = '';
-                                    setState(() {
-                                      HomePage.searchText = '';
-                                    });
-                                  },
-                                  child: Container(
-                                    padding: EdgeInsets.only(right: 4),
-                                    child: Icon(Icons.close,
-                                        color: lightText),
-                                  ),
-                                ) : Container(
-                                  padding: EdgeInsets.only(right: 4),
-                                  child: Icon(Icons.search,
-                                      color: _focusNode.hasFocus ? blue10 : lightText),
-                                )),
+                                child: searchTextController.text != ''
+                                    ? GestureDetector(
+                                        onTap: () {
+                                          searchTextController.text = '';
+                                          setState(() {
+                                            HomePage.searchText = '';
+                                          });
+                                        },
+                                        child: Container(
+                                          padding: EdgeInsets.only(right: 4),
+                                          child: Icon(Icons.close,
+                                              color: lightText),
+                                        ),
+                                      )
+                                    : Container(
+                                        padding: EdgeInsets.only(right: 4),
+                                        child: Icon(Icons.search,
+                                            color: _focusNode.hasFocus
+                                                ? blue10
+                                                : lightText),
+                                      )),
 
                             // Positioned(
                             //     right: 8,
@@ -158,26 +159,32 @@ class _HomePageState extends State<HomePage> {
                   child: Text('Movie Recommendation', style: labelTextStyle),
                 ),
                 Expanded(
-                    child: GridView.builder(
-                        padding: EdgeInsets.only(
-                            top: 10, bottom: 100, left: 20, right: 20),
-                        gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisSpacing: 20,
-                            mainAxisSpacing: 20,
-                            crossAxisCount: 2,
-                            childAspectRatio: (100 / 165)),
-                        scrollDirection: Axis.vertical,
-                        itemCount: movies.length,
-                        itemBuilder: (BuildContext context, int index) {
+                    child: movies.isNotEmpty
+                        ? GridView.builder(
+                            padding: EdgeInsets.only(
+                                top: 10, bottom: 100, left: 20, right: 20),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisSpacing: 20,
+                                    mainAxisSpacing: 20,
+                                    crossAxisCount: 2,
+                                    childAspectRatio: (100 / 165)),
+                            scrollDirection: Axis.vertical,
+                            itemCount: movies.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              Movie movie = movies[index];
+                              movie.posterUrl =
+                                  posterUrl[getRandomIndex(posterUrl)];
 
-                          Movie movie = movies[index];
-                          movie.posterUrl = posterUrl[getRandomIndex(posterUrl)];
+                              if(movies.isEmpty){
+                                return Center(child: Text('Movies not found!', style: labelTextStyle));
+                              }
 
-                          return MovieModel(
-                            movie: movie
-                          );
-                        })),
+                              return MovieModel(movie: movie);
+                            })
+                        : Center(
+                            child: CircularProgressIndicator(color: text),
+                          )),
               ],
             ),
           ),

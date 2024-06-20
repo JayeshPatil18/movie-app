@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../shared/constants/values.dart';
+import '../../../../shared/routes/route_arguments.dart';
 import '../../domain/entities/entite.dart';
 
 
@@ -24,7 +25,7 @@ class _MovieModelState extends State<MovieModel> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.pushNamed(context, 'view_review', arguments: IdArguments(widget.reviewId));
+        Navigator.pushNamed(context, 'view_review', arguments: IdArguments(widget.movie.movieId));
       },
       child: Container(
         decoration: BoxDecoration(
