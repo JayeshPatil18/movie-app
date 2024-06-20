@@ -54,6 +54,11 @@ class Movie {
       voteCount: json['vote_count'],
     );
   }
+
+  // Method to get genres as list of strings
+  List<String> getGenresAsString() {
+    return genres.map((genre) => genre.name).toList();
+  }
 }
 
 class Genre {

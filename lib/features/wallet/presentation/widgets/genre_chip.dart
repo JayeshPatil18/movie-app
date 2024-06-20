@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../shared/constants/colors.dart';
+
 class GenreChip extends StatelessWidget {
   final String label;
 
@@ -7,10 +9,15 @@ class GenreChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      label: Text(label),
-      backgroundColor: Colors.grey[800],
-      labelStyle: TextStyle(color: Colors.white),
+    return Row(
+      children: [
+        Chip(
+          label: Text(label),
+          backgroundColor: Colors.grey[800],
+          labelStyle: TextStyle(color: text),
+        ),
+        SizedBox(width: 10)
+      ],
     );
   }
 }

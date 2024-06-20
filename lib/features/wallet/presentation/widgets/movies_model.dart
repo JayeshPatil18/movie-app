@@ -6,7 +6,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../../../../shared/constants/values.dart';
 import '../../../../shared/routes/route_arguments.dart';
-import '../../domain/entities/entite.dart';
+import '../../domain/entities/movie.dart';
 
 
 class MovieModel extends StatefulWidget {

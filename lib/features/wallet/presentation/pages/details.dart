@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../shared/constants/colors.dart';
 import '../../../../shared/constants/textstyle.dart';
-import '../../domain/entities/entite.dart';
+import '../../../../shared/utils/methods.dart';
+import '../../domain/entities/movie.dart';
 import '../widgets/button.dart';
 import '../widgets/genre_chip.dart';
 
@@ -27,7 +28,7 @@ class _ViewDetailsState extends State<ViewDetails> {
             Stack(
               children: [
                 Container(
-                  height: 400,
+                  height: 420,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(widget.movie.posterUrl),
@@ -67,20 +68,24 @@ class _ViewDetailsState extends State<ViewDetails> {
                   SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(Icons.timer, color: Colors.grey, size: 20),
-                      SizedBox(width: 4),
-                      Text(
-                        '152 minutes',
-                        style: TextStyle(color: Colors.grey),
-                      ),
-                      SizedBox(width: 16),
                       Icon(Icons.star, color: starColor, size: 20),
                       SizedBox(width: 4),
                       Text(
                         '${widget.movie.voteAverage.toString()} (${widget.movie.voteCount})',
                         style: TextStyle(color: Colors.grey),
                       ),
-                    ],
+                      SizedBox(width: 12),
+              Chip(
+                label: Text(
+                  'Popularity Score : ' + widget.movie.popularity.toString().split('.')[0],
+                  style: TextStyle(
+                    fontSize: 12, // Adjust the font size as needed
+                    color: Colors.white, // Adjust the text color
+                  ),
+                ),
+                backgroundColor: Colors.grey[800],
+              )
+              ],
                   ),
                   SizedBox(height: 16),
                   Text(
@@ -89,30 +94,34 @@ class _ViewDetailsState extends State<ViewDetails> {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    'December 9, 2017',
+                    formatDate(widget.movie.releaseDate),
                     style: TextStyle(color: Colors.white),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Genre',
+                    'Genres',
                     style: TextStyle(color: Colors.grey),
                   ),
-                  SizedBox(height: 4),
-                  Row(
-                    children: [
-                      GenreChip(label: 'Action'),
-                      SizedBox(width: 8),
-                      GenreChip(label: 'Sci-Fi'),
-                    ],
+                  Container(
+                    margin: EdgeInsets.only(top: 8, bottom: 4),
+                    height: 40,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: widget.movie.genres.length,
+                      itemBuilder: (context, index) {
+                        Genre genre = widget.movie.genres[index];
+                        return GenreChip(label: genre.name);
+                      },
+                    ),
                   ),
                   SizedBox(height: 16),
                   Text(
-                    'Synopsis',
+                    'Overview',
                     style: TextStyle(color: Colors.grey),
                   ),
-                  SizedBox(height: 4),
+                  SizedBox(height: 6),
                   Text(
-                    'Rey (Daisy Ridley) finally manages to find the legendary Jedi knight, Luke Skywalker (Mark Hamill) on an island with a magical aura. The heroes of The Force Awakens including Leia, Finn Read more..',
+                    widget.movie.overview,
                     style: TextStyle(color: Colors.white),
                   ),
                 ],

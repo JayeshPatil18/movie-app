@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:assessment/features/wallet/domain/entities/entite.dart';
+import 'package:assessment/features/wallet/domain/entities/movie.dart';
 import 'package:http/http.dart' as http;
 
 class MovieService {

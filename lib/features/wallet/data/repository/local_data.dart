@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import '../../domain/entities/entite.dart';
+import '../../domain/entities/movie.dart';
 
 // List<Movie> movies = [
 //   Movie(

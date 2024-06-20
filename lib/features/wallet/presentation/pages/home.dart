@@ -1,5 +1,5 @@
 import 'package:assessment/features/wallet/data/repository/local_data.dart';
-import 'package:assessment/features/wallet/domain/entities/entite.dart';
+import 'package:assessment/features/wallet/domain/entities/movie.dart';
 import 'package:assessment/features/wallet/presentation/widgets/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
