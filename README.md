@@ -15,7 +15,7 @@ This Flutter application fetches a list of movies from an external API and allow
 
 ### Screenshot
 
-![Screenshot](https://link-to-screenshot.png)
+![Screenshot](https://github.com/JayeshPatil18/movie-app/blob/master/movie-app.png)
 
 ## Links
 
