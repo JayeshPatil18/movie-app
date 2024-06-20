@@ -36,6 +36,18 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  void searchMovies() {
+    if(HomePage.searchText.isNotEmpty){
+      List<Movie> movieFiltered = movies.skipWhile((Movie element) {
+        return !(element.title.toLowerCase().contains(HomePage.searchText.toLowerCase()));
+      }).toList();
+
+      setState(() {
+        movies = movieFiltered;
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -78,10 +90,10 @@ class _HomePageState extends State<HomePage> {
                                 // cursorHeight: cursorHeight,
                                 cursorColor: blue10,
                                 onChanged: (value) {
-                                  setState(() {
                                     HomePage.searchText =
                                         value.trim().toLowerCase();
-                                  });
+
+                                  searchMovies();
                                 },
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.only(
