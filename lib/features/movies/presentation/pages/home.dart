@@ -1,13 +1,13 @@
-import 'package:assessment/features/wallet/data/repository/local_data.dart';
-import 'package:assessment/features/wallet/domain/entities/movie.dart';
-import 'package:assessment/features/wallet/presentation/widgets/movies_model.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../../../../shared/constants/colors.dart';
 import '../../../../shared/constants/textstyle.dart';
 import '../../../../shared/constants/values.dart';
+import '../../data/repository/local_data.dart';
+import '../../domain/entities/movie.dart';
 import '../../domain/repository/movies_service.dart';
 import '../widgets/button.dart';
+import '../widgets/movies_model.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

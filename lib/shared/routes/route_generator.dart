@@ -1,7 +1,8 @@
-import 'package:assessment/features/wallet/presentation/pages/details.dart';
 import 'package:assessment/shared/routes/route_arguments.dart';
 import 'package:flutter/material.dart';
-import '../../features/wallet/presentation/pages/home.dart';
+
+import '../../features/movies/presentation/pages/details.dart';
+import '../../features/movies/presentation/pages/home.dart';
 
 class RouteGenerator{
   Route<dynamic> generateRoute(RouteSettings settings){

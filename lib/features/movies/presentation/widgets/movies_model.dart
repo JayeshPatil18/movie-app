@@ -1,4 +1,4 @@
-import 'package:assessment/features/wallet/presentation/widgets/poster_shimmer.dart';
+import 'package:assessment/features/movies/presentation/widgets/poster_shimmer.dart';
 import 'package:assessment/shared/constants/colors.dart';
 import 'package:assessment/shared/constants/textstyle.dart';
 import 'package:flutter/material.dart';
