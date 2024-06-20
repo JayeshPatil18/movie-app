@@ -28,46 +28,44 @@ class _MovieModelState extends State<MovieModel> {
       },
       child: Container(
         decoration: BoxDecoration(
-            // color: secondary30,
+            color: secondary30,
             borderRadius:
             BorderRadius.circular(borderRadius)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              child: Stack(
-                children: [
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(
-                          borderRadius),
-                      child: widget.movie.posterUrl == 'null'
-                          ? SizedBox(
-                        height: 156,
-                        width: 156,
-                        child: Shimmer.fromColors(
-                          baseColor: Color(0xFFe4e4e4),
-                          highlightColor: Color(0xFFCDCDCD),
-                          child: Container(
-                            height: 156,
-                            width: 156,
-                            color: Colors.white,
-                          ),
+            Stack(
+              children: [
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(
+                        borderRadius),
+                    child: widget.movie.posterUrl == 'null'
+                        ? SizedBox(
+                      height: 156,
+                      width: 156,
+                      child: Shimmer.fromColors(
+                        baseColor: Color(0xFFe4e4e4),
+                        highlightColor: Color(0xFFCDCDCD),
+                        child: Container(
+                          height: 156,
+                          width: 156,
+                          color: Colors.white,
                         ),
-                      )
-                          : CustomImageShimmer(posterUrl: widget.movie.posterUrl, width: 156, height: 156, fit: BoxFit.fitHeight)),
-                ],
-              ),
+                      ),
+                    )
+                        : CustomImageShimmer(posterUrl: widget.movie.posterUrl, width: double.infinity, height: 200, fit: BoxFit.cover)),
+              ],
             ),
             Container(
               child: Expanded(
                 child: Container(
-                  padding: EdgeInsets.only(left: 4, right: 4, top: 8),
+                  padding: EdgeInsets.only(left: 10, right: 10, top: 8),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: 2),
                       Text(widget.movie.title,
-                          maxLines: 2,
+                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: movieTitle),
                       SizedBox(height: 4),
@@ -85,7 +83,7 @@ class _MovieModelState extends State<MovieModel> {
                                 Icon(Icons.star, size: 16, color: starColor),
                                 SizedBox(width: 4),
                                 Text(
-                                  widget.movie.rating.toString(),
+                                  '${widget.movie.voteAverage.toString()} (${widget.movie.voteCount})',
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: subTitle)

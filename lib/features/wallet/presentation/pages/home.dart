@@ -2,10 +2,11 @@ import 'package:assessment/features/wallet/data/repository/local_data.dart';
 import 'package:assessment/features/wallet/domain/entities/entite.dart';
 import 'package:assessment/features/wallet/presentation/widgets/movies_model.dart';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart' as http;
 import '../../../../shared/constants/colors.dart';
 import '../../../../shared/constants/textstyle.dart';
 import '../../../../shared/constants/values.dart';
+import '../../domain/repository/movies_service.dart';
 import '../widgets/button.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,9 +23,24 @@ class _HomePageState extends State<HomePage> {
   TextEditingController searchTextController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
 
+  MovieService movieService = MovieService();
+  List<Movie> movies = [];
+
+  void fetchMovies() async {
+    try {
+      List<Movie> fetchedMovies = await movieService.getMovies();
+      setState(() {
+        movies = fetchedMovies;
+      });
+    } catch (e) {
+      print('Error fetching movies: $e');
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    fetchMovies();
     _focusNode.addListener(() {
       setState(() {
       });
@@ -147,10 +163,10 @@ class _HomePageState extends State<HomePage> {
                             top: 10, bottom: 100, left: 20, right: 20),
                         gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10,
-                            crossAxisCount: 3,
-                            childAspectRatio: (71 / 158)),
+                            crossAxisSpacing: 20,
+                            mainAxisSpacing: 20,
+                            crossAxisCount: 2,
+                            childAspectRatio: (100 / 165)),
                         scrollDirection: Axis.vertical,
                         itemCount: movies.length,
                         itemBuilder: (BuildContext context, int index) {
